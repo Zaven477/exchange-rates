@@ -12,8 +12,10 @@ export const fetchDataExchangeRates = () => {
     try {
       dispatch(setLoading(true));
 
-      const { currency, Date } = await getExchangeRates();
-      dispatch(setExchangeCurrency(currency));
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+
+      const {Valute, Date} = await getExchangeRates();
+      dispatch(setExchangeCurrency(Valute));
       dispatch(setCurrentDate(Date));
 
       dispatch(setLoading(false));
