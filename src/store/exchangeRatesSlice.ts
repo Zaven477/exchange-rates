@@ -3,7 +3,7 @@ import { TCurrency, TCurrentDateExchange } from "./types";
 
 const initialState: TCurrency &
   TCurrentDateExchange & { loading: boolean; error: null | string } = {
-  exchangeCurrency: [],
+  exchangeCurrency: {},
   currentDate: "",
   loading: false,
   error: null,
@@ -14,7 +14,7 @@ const exchangeRatesSlice = createSlice({
   initialState,
   reducers: {
     setExchangeCurrency: (state, { payload }) => {
-      state.exchangeCurrency.push(payload);
+      state.exchangeCurrency = payload;
     },
     setCurrentDate: (state, { payload }) => {
       state.currentDate = payload;
@@ -28,11 +28,7 @@ const exchangeRatesSlice = createSlice({
   },
 });
 
-export const {
-  setExchangeCurrency,
-  setCurrentDate,
-  setLoading,
-  setError,
-} = exchangeRatesSlice.actions;
+export const { setExchangeCurrency, setCurrentDate, setLoading, setError } =
+  exchangeRatesSlice.actions;
 
 export default exchangeRatesSlice.reducer;
